@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from myapp.views import IndexView, TinhToanView, LoginView, FormView
+from myapp.views import (IndexView, TinhToanView, LoginView,
+                         FormView, ViewBaiViet, ListBaiViet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +25,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login_url'),
     path('form/', FormView.as_view(), name='form_url'),
     path('a/', include('myapp.urls')),
+    path('post/<slugg>/', ViewBaiViet.as_view(), name='post_detail'),
+    path('post/', ListBaiViet.as_view())
 
 ]

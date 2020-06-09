@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <ul>
+        {% for item in bv %}
+        <li><a href="{% url 'post_detail' item.slug %}">{{ item.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

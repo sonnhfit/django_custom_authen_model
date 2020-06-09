@@ -3,7 +3,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import HangSanXuat, HangHoa
+from .models import HangSanXuat, HangHoa, BaiViet
 
 
 def index(request):
@@ -87,3 +87,18 @@ class FormView(LoginRequiredMixin, View):
         }
         return render(request, 'form.html', context)
 
+
+class ViewBaiViet(View):
+
+    def get(self, request, slugg):
+        p = BaiViet.objects.get(slug=slugg)
+        return render(request, 'post.html', {'p': p})
+
+
+class ListBaiViet(View):
+    def get(self, request):
+        lp = BaiViet.objects.all()
+        context = {
+            'bv': lp
+        }
+        return render(request, 'list_post.html', context)

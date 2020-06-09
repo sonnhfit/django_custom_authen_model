@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 # quản lý tài khoản
@@ -27,3 +28,12 @@ class HangHoa(models.Model):
 class User(AbstractUser):
     phone_number = models.CharField(max_length=255, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
+
+
+class BaiViet(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True)
+    content = RichTextField()
+
+
+
